@@ -1,4 +1,4 @@
-Choosy-nose
+nose-picker
 ===========
 
-Choosy-nose is a plugin that chooses to only run a fraction of your unit tests in django
+nose-picker is a plugin that picks a subset of your unit tests (in django too!)
