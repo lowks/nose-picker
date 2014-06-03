@@ -47,19 +47,19 @@ class NosePicker(Plugin):
             '--which-process',
             type='int',
             dest='which_process',
-            help='Which process number this is of the total.',
+            help='nose-picker: Which process number this is of the total.',
         )
         parser.add_option(
             '--futz-with-django',
             action='store_true',
             dest='futz_with_django',
-            help='Whether to futz with the django configuration.',
+            help='nose-picker: Whether to futz with the django configuration.',
         )
         parser.add_option(
             '--total-processes',
             type='int',
             dest='total_processes',
-            help='How many total processes to run with.',
+            help='nose-picker: How many total processes to run with.',
         )
         super(NosePicker, self).options(parser, env=env)
 
