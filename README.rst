@@ -15,6 +15,13 @@ running through, does a modulo division by N, then sees if this file is "its".
 Very simple, but it lets you run multiple of these **nose-picker** enabled
 runners in parallel, each running a separate subset of the unit tests!
 
+Motivation
+----------
+
+The nose multiprocess plugin takes over the test runner when it runs, and thus
+is not amenable to environments where you need a custom test runner.
+**nose-picker** lets you keep your test runner!
+
 Installing
 ----------
 
