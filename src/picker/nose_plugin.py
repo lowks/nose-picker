@@ -34,6 +34,26 @@ import os
 from nose.plugins import Plugin
 
 
+def hash_filename(filename):
+    '''Design goal:
+
+    * Take a filename and output a number.
+    * Return the same number even if the filename
+      is now in a different path.
+
+    To achieve that, it assumes that filename is a sub-path
+    of the current working directory, and then removes the
+    current working directory from the path.
+    '''
+    here = os.path.abspath(os.getcwd())
+    there = os.path.abspath(filename)
+    assert there.startswith(here)
+
+    shorter_there = there[len(here):]
+    as_int = int(hashlib.sha1(shorter_there).hexdigest(), 16)
+    return as_int
+
+
 class NosePicker(Plugin):
     name = 'nose-picker'
 
@@ -88,7 +108,7 @@ class NosePicker(Plugin):
 
     def _should_run(self, name):
         if self.enabled:
-            hashed_value = hash(name) % self.total_processes
+            hashed_value = hash_filename(name) % self.total_processes
             if hashed_value == self.which_process:
                 return None
             return False
